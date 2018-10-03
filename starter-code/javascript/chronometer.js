@@ -1,45 +1,46 @@
 // Constructor
 
 function Chronometer() {
-this.currentTime = 0;
-this.intervalId = 0 ;
+  this.currentTime = 0;
+  this.intervalId = 0;
 
-this.startClick = function() {
+  this.startClick = function() {
+    var self = this;
+    this.intervalId = setInterval(function() {
+      self.currentTime++;
+      self.setTime();
+    }, 1000);
+  };
 
-this.currentTime = setInterval(function() {
-  this.currentTime++;
-  this.intervalId++;
+  this.setMinutes = function() {
+    return parseInt(this.currentTime / 60);
+  };
 
-  setTime(currentTime);
-    
-}, 1000);
-}
+  this.setSeconds = function() {
+    return parseInt(this.currentTime % 60);
+  };
 
-this.setMinutes = function () {
-  return parseInt(this.currentTime / 60);
-}
+  this.twoDigitsNumber = function(number) {
+    if (number < 10) {
+      number = "0" + number;
+      return number.toString();
+    } else {
+      return number.toString();
+    }
+  };
 
-this.setSeconds = function() {
-  return parseInt(this.currentTime % 60)
-}
+  this.setTime = function() {
+    this.minutes = this.twoDigitsNumber(this.setMinutes());
+    this.secondes = this.twoDigitsNumber(this.setSeconds());
+  };
 
-this.twoDigitsNumber = function(number) {
-  if (number < 10) {
-    number = "0" + number;
-    return number.toString();
-}
-  else {
-    return number.toString();
-}
-}
+  this.stopClick = function() {
+    clearInterval(this.intervalId);
+  };
 
-this.setTime = function() {
-    
-  this.minutes = twoDigitsNumber(setMinutes());
-  this.secondes = twoDigitsNumber(setSeconds());
-
-}
-
+  this.resetClick = function() {
+    this.intervalId = 0;
+  };
 }
 
 // Chronometer.prototype.startClick = function () {
@@ -47,15 +48,15 @@ this.setTime = function() {
 // };
 
 // Chronometer.prototype.setMinutes = function () {
-  
+
 // };
 
 // Chronometer.prototype.setSeconds = function () {
-  
+
 // };
 
 // Chronometer.prototype.twoDigitsNumber = function () {
-  
+
 // };
 
 // Chronometer.prototype.setTime = function () {
@@ -67,7 +68,7 @@ this.setTime = function() {
 // };
 
 // Chronometer.prototype.stopClick = function () {
-  
+
 // };
 
 // Chronometer.prototype.resetClick = function () {
