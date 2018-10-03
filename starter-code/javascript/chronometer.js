@@ -9,10 +9,10 @@ this.startClick = function() {
 this.currentTime = setInterval(function() {
   this.currentTime++;
   this.intervalId++;
+
+  setTime(currentTime);
+    
 }, 1000);
-if (this.currentTime > 100) {
-  ClearInterval()
-}
 }
 
 this.setMinutes = function () {
@@ -24,15 +24,21 @@ this.setSeconds = function() {
 }
 
 this.twoDigitsNumber = function(number) {
-if (number < 10) {
-   number = "0" + number;
-   return number.toString();
+  if (number < 10) {
+    number = "0" + number;
+    return number.toString();
 }
-else {
-  return number.toString();
+  else {
+    return number.toString();
 }
 }
 
+this.setTime = function() {
+    
+  this.minutes = twoDigitsNumber(setMinutes());
+  this.secondes = twoDigitsNumber(setSeconds());
+
+}
 
 }
 
