@@ -15,6 +15,25 @@ if (this.currentTime > 100) {
 }
 }
 
+this.setMinutes = function () {
+  return parseInt(this.currentTime / 60);
+}
+
+this.setSeconds = function() {
+  return parseInt(this.currentTime % 60)
+}
+
+this.twoDigitsNumber = function(number) {
+if (number < 10) {
+   number = "0" + number;
+   return number.toString();
+}
+else {
+  return number.toString();
+}
+}
+
+
 }
 
 // Chronometer.prototype.startClick = function () {
